@@ -143,6 +143,26 @@ mkdir -p content-library/xizang-20250326/images
 
 米西先生 - AI自媒体运营主控
 
+## 数据复盘
+
+定期执行数据分析，优化文章质量：
+
+```bash
+# 生成周报
+wechat-pipeline content-library weekly analytics
+
+# 生成月报
+wechat-pipeline content-library monthly analytics
+```
+
+复盘内容：
+- 阅读量统计
+- 爆款文章特征分析
+- 选题效果评估
+- 配图效果分析
+- 优化建议反馈给子代理
+
 ## 版本
 
-v1.0.0 (2026-03-26)
+v1.0.1 (2026-03-27) - 增加数据复盘功能
+v1.0.0 (2026-03-26) - 初始版本

@@ -15,7 +15,7 @@ echo ""
 
 case $TASK in
   research|all)
-    echo "【1/4】选题调研..."
+    echo "【1/5】选题调研..."
     # 派出情报员
     echo "请手动执行:"
     echo "  sessions_spawn(agentId='main-5', task='选题调研', ...)"
@@ -24,7 +24,7 @@ case $TASK in
     ;;
   
   write|all)
-    echo "【2/4】文章撰写..."
+    echo "【2/5】文章撰写..."
     echo "请手动执行:"
     echo "  sessions_spawn(agentId='main-3', task='撰写文章', ...)"
     echo "  输入: $WORK_DIR/research.md"
@@ -33,7 +33,7 @@ case $TASK in
     ;;
   
   images|all)
-    echo "【3/4】配图准备..."
+    echo "【3/5】配图准备..."
     echo "请手动执行:"
     echo "  sessions_spawn(agentId='main-2', task='配图准备', ...)"
     echo "  输出: $WORK_DIR/images/"
@@ -41,7 +41,7 @@ case $TASK in
     ;;
   
   upload|all)
-    echo "【4/4】排版上传..."
+    echo "【4/5】排版上传..."
     
     # 检查必要文件
     if [ ! -f "$WORK_DIR/article.md" ]; then
@@ -58,6 +58,11 @@ case $TASK in
     expect "$(dirname "$0")/upload.exp" "$WORK_DIR"
     
     echo "✅ 上传完成"
+    ;;
+  
+  analytics)
+    echo "【5/5】数据复盘..."
+    "$(dirname "$0")/analytics.sh" "$PERIOD" "$WORK_DIR"
     ;;
   
   *)
