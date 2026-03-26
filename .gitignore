@@ -1,0 +1,14 @@
+# 打包文件
+*.tar.gz
+
+# 测试目录
+test/
+content-library/
+
+# 配置文件（包含敏感信息）
+config.json
+.server-credentials
+
+# 临时文件
+*.log
+.DS_Store

@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "name": "wechat-article-pipeline",
+  "displayName": "公众号文章流水线",
+  "version": "1.0.0",
+  "description": "自动化公众号文章创作全流程：选题调研→文章撰写→配图下载→排版上传",
+  "author": "米西先生",
+  "main": "./pipeline.sh",
+  "commands": {
+    "wechat-pipeline": {
+      "description": "运行公众号文章流水线",
+      "script": "./pipeline.sh"
+    }
+  }
+}

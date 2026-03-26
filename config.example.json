@@ -1,0 +1,21 @@
+{
+  "wechat": {
+    "appid": "your_appid_here",
+    "secret": "your_secret_here"
+  },
+  "server": {
+    "ip": "118.25.194.71",
+    "user": "ubuntu",
+    "password": "your_password_here"
+  },
+  "agents": {
+    "researcher": "main-5",
+    "writer": "main-3",
+    "designer": "main-2"
+  },
+  "defaults": {
+    "word_count": "2000-2500",
+    "image_count": 5,
+    "topics": ["西藏历史", "藏族文化", "历史人物"]
+  }
+}
