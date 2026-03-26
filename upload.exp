@@ -1,0 +1,45 @@
+#!/usr/bin/expect -f
+set timeout 180
+
+set work_dir [lindex $argv 0]
+
+# 读取服务器配置
+set server_ip "118.25.194.71"
+set server_user "ubuntu"
+set server_pass "Zj7682595"
+
+# 上传文章和配图
+spawn scp -o StrictHostKeyChecking=no \
+    $work_dir/article.html \
+    $work_dir/images/cover.jpg \
+    $work_dir/images/body1.jpg \
+    $work_dir/images/body2.jpg \
+    $work_dir/images/body3.jpg \
+    $work_dir/images/body4.jpg \
+    $server_user@$server_ip:/tmp/
+
+expect "password:"
+send "$server_pass\r"
+expect eof
+
+# SSH执行上传
+spawn ssh -o StrictHostKeyChecking=no $server_user@$server_ip
+expect "password:"
+send "$server_pass\r"
+expect "$ "
+
+# 启动代理
+send "nohup python3 /tmp/wx_proxy.py > /tmp/wx_proxy.log 2>&1 &\r"
+expect "$ "
+send "sleep 2\r"
+expect "$ "
+
+# 执行上传脚本
+send "cd /tmp && python3 wx_upload.py\r"
+expect -timeout 120 "$ "
+
+# 清理
+send "rm -f /tmp/cover.jpg /tmp/body1.jpg /tmp/body2.jpg /tmp/body3.jpg /tmp/body4.jpg /tmp/article.html\r"
+expect "$ "
+send "exit\r"
+expect eof
